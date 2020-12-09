@@ -1,5 +1,8 @@
-public partial class TestInputs {
-    public static string Day1  = @"1833
+namespace aoc_tests.TestInputs
+{
+	public static partial class TestInput
+	{
+		public static string Day1 = @"1833
 1949
 1745
 1863
@@ -199,4 +202,5 @@ public partial class TestInputs {
 1620
 1936
 1209";
+	}
 }

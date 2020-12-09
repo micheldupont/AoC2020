@@ -1,6 +1,8 @@
-public partial class TestInputs 
+namespace aoc_tests.TestInputs
 {
-        public static string Day9 = @"33
+	public static partial class TestInput
+	{
+		public static string Day9 = @"33
 12
 43
 4
@@ -1000,4 +1002,5 @@ public partial class TestInputs
 75415171865071
 74939409624468
 83267654028700";
+	}
 }

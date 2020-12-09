@@ -1,6 +1,6 @@
-using System;
-using Xunit;
 using aoc_code;
+using aoc_tests.TestInputs;
+using Xunit;
 
 namespace aoc_tests
 {
@@ -38,7 +38,7 @@ namespace aoc_tests
 		[Fact]
 		public void Run1Mine()
 		{
-			var test = new Day9().Run(TestInputs.Day9, 25);
+			var test = new Day9().Run(TestInput.Day9, 25);
 
 			Assert.Equal(530627549, test);
 		}
@@ -75,7 +75,7 @@ namespace aoc_tests
 		[Fact]
 		public void Run2Mine()
 		{
-			var test = new Day9().Run2(TestInputs.Day9, 25);
+			var test = new Day9().Run2(TestInput.Day9, 25);
 
 			Assert.Equal(77730285, test);
 		}

@@ -1,6 +1,8 @@
-public partial class TestInputs 
+namespace aoc_tests.TestInputs
 {
-        public static string Day8 = @"acc +13
+	public static partial class TestInput
+	{
+		public static string Day8 = @"acc +13
 acc -6
 acc -8
 jmp +140
@@ -623,4 +625,5 @@ acc +40
 acc +14
 acc +34
 jmp +1";
+	}
 }

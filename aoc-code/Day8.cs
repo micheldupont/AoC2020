@@ -1,129 +1,122 @@
-using System.Transactions;
-using System.Text.RegularExpressions;
-using System.Linq;
-using System.Collections.Generic;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace aoc_code
 {
-    public class Day8
-    {
-        public int Run(string input)
-        {
-            var instructions = this.ParseInstructions(input);
+	public class Day8
+	{
+		public int Run(string input)
+		{
+			var instructions = ParseInstructions(input);
 
-            var accumulator = 0;
-            this.RunToEnd(ref instructions, ref accumulator);
+			var accumulator = 0;
+			RunToEnd(ref instructions, ref accumulator);
 
-            return accumulator;
-        }
+			return accumulator;
+		}
 
-        public int Run2(string input)
-        {
-            var instructions = this.ParseInstructions(input);
+		public int Run2(string input)
+		{
+			var instructions = ParseInstructions(input);
 
-            var runResult = "";
-            var mutatedIndex = 0;
-            var accumulator = 0;
+			var runResult = "";
+			var mutatedIndex = 0;
+			var accumulator = 0;
 
-            while(runResult != "done")
-            {
-                accumulator = 0;
-                var mutatedProgram = this.Mutate(ref instructions, mutatedIndex);
-                runResult = this.RunToEnd(ref mutatedProgram, ref accumulator);
+			while (runResult != "done")
+			{
+				accumulator = 0;
+				var mutatedProgram = Mutate(ref instructions, mutatedIndex);
+				runResult = RunToEnd(ref mutatedProgram, ref accumulator);
 
-                mutatedIndex += 1;
-                
-            }
-            
-            return accumulator;
-        }
+				mutatedIndex += 1;
+			}
 
-        private List<Instruction> ParseInstructions(string input)
-        {
-            var instructions = new List<Instruction>();
+			return accumulator;
+		}
 
-            var lines = input.Split("\r\n", StringSplitOptions.RemoveEmptyEntries);
-            foreach(var line in lines)
-            {
-                var parts = line.Split(" ");
-                var op = parts[0];
-                var arg = Int32.Parse(parts[1]);
+		private List<Instruction> ParseInstructions(string input)
+		{
+			var instructions = new List<Instruction>();
 
-                instructions.Add(new Instruction{Op = op, Arg = arg});
-            }
+			var lines = input.Split("\r\n", StringSplitOptions.RemoveEmptyEntries);
+			foreach (var line in lines)
+			{
+				var parts = line.Split(" ");
+				var op = parts[0];
+				var arg = int.Parse(parts[1]);
 
-            return instructions;
-        }
+				instructions.Add(new Instruction {Op = op, Arg = arg});
+			}
 
-        private string RunToEnd(ref List<Instruction> instructions, ref int accumulator)
-        {
-            instructions.ForEach(i => i.Done = false);
+			return instructions;
+		}
 
-            var instructionIndex = 0;
-            var currentInstruction = instructions[instructionIndex];
-            var programLength = instructions.Count;
+		private string RunToEnd(ref List<Instruction> instructions, ref int accumulator)
+		{
+			instructions.ForEach(i => i.Done = false);
 
-            while(!currentInstruction.Done)
-            {
-                var jumpValue = currentInstruction.Run(ref accumulator);
-                instructionIndex += jumpValue;
-                
-                if(instructionIndex >= programLength)
-                {
-                    return "done";
-                }
-                currentInstruction = instructions[instructionIndex];
-            }
+			var instructionIndex = 0;
+			var currentInstruction = instructions[instructionIndex];
+			var programLength = instructions.Count;
 
-            return "loop";
-        }
+			while (!currentInstruction.Done)
+			{
+				var jumpValue = currentInstruction.Run(ref accumulator);
+				instructionIndex += jumpValue;
 
-        private List<Instruction> Mutate(ref List<Instruction> origProgram, int mutateIndex)
-        {
-            var prog = origProgram.Select(i => new Instruction(i)).ToList();
+				if (instructionIndex >= programLength) return "done";
+				currentInstruction = instructions[instructionIndex];
+			}
 
-            var toMutate = prog[mutateIndex];
+			return "loop";
+		}
 
-            if(toMutate.Op == "nop") 
-            {
-                toMutate.Op = "jmp";
-            } else if(toMutate.Op == "jmp") 
-            {
-                toMutate.Op = "nop";
-            }
+		private List<Instruction> Mutate(ref List<Instruction> origProgram, int mutateIndex)
+		{
+			var prog = origProgram.Select(i => new Instruction(i)).ToList();
 
-            return prog;
-        }
-    }
+			var toMutate = prog[mutateIndex];
 
-    public class Instruction {
-        public string Op { get; set; }
-        public int Arg { get; set; }
-        public bool Done { get; set; }
+			if (toMutate.Op == "nop")
+				toMutate.Op = "jmp";
+			else if (toMutate.Op == "jmp") toMutate.Op = "nop";
 
-        public Instruction() { }
-        public Instruction(Instruction toCopy)
-        {
-            this.Op = toCopy.Op;
-            this.Arg = toCopy.Arg;
-            this.Done = false;
-        }
+			return prog;
+		}
+	}
 
-        public int Run(ref int accumulator)
-        {
-            this.Done = true;
-            switch(this.Op)
-            {
-                case "acc":
-                    accumulator += this.Arg;
-                    return 1;
-                case "jmp":
-                    return this.Arg;
-                case "nop":
-                default:
-                    return 1;
-             }
-        }
-    }
+	public class Instruction
+	{
+		public Instruction()
+		{
+		}
+
+		public Instruction(Instruction toCopy)
+		{
+			Op = toCopy.Op;
+			Arg = toCopy.Arg;
+			Done = false;
+		}
+
+		public string Op { get; set; }
+		public int Arg { get; set; }
+		public bool Done { get; set; }
+
+		public int Run(ref int accumulator)
+		{
+			Done = true;
+			switch (Op)
+			{
+				case "acc":
+					accumulator += Arg;
+					return 1;
+				case "jmp":
+					return Arg;
+				default:
+					return 1;
+			}
+		}
+	}
 }

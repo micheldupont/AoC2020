@@ -1,5 +1,8 @@
-public partial class TestInputs {
-        public static string Day6 = @"nefaym
+namespace aoc_tests.TestInputs
+{
+	public static partial class TestInput
+	{
+		public static string Day6 = @"nefaym
 eynamf
 eafnmy
 afnmey
@@ -2084,4 +2087,5 @@ ayhkusp
 pkhysua
 upkahys
 kpyhuanvsd";
+	}
 }

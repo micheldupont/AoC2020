@@ -1,6 +1,8 @@
-public partial class TestInputs {
-    
-    public static string Day3 = @"..#.......#..##...#...#..#.#...
+namespace aoc_tests.TestInputs
+{
+	public static partial class TestInput
+	{
+		public static string Day3 = @"..#.......#..##...#...#..#.#...
 ..##..#..#.....#.........#....#
 ...#.##..#.#......#.#....#.....
 ...#.....#......#...#..........
@@ -323,4 +325,5 @@ public partial class TestInputs {
 #....#.#........#.............#
 ..##...#..........#........#...
 ..#..#..#....#....#............";
+	}
 }

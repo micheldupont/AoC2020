@@ -1,90 +1,96 @@
-using System.Transactions;
-using System.Text.RegularExpressions;
-using System.Linq;
 using System.Collections.Generic;
-using System;
+using System.Linq;
 
 namespace aoc_code
 {
-    public class Group {
-        public List<string> PeopleAnswers { get; set; }
+	public class Group
+	{
+		public List<string> PeopleAnswers { get; set; }
 
-        public char[] GetUniqueYes(){
-            var dict = this.CompileAnswers();
+		public char[] GetUniqueYes()
+		{
+			var dict = CompileAnswers();
 
-            return dict.Keys.ToArray();
-        }
+			return dict.Keys.ToArray();
+		}
 
-        public char[] GetCommonYes(){
-            var dict = this.CompileAnswers();
-            var peopleCount = this.PeopleAnswers.Count();
+		public char[] GetCommonYes()
+		{
+			var dict = CompileAnswers();
+			var peopleCount = PeopleAnswers.Count();
 
-            var commons = new List<char>();
+			var commons = new List<char>();
 
-            foreach(var key in dict.Keys){
-                if(dict[key] == peopleCount){
-                    commons.Add(key);
-                }
-            }
+			foreach (var key in dict.Keys)
+				if (dict[key] == peopleCount)
+					commons.Add(key);
 
-            return commons.ToArray();
-        }
+			return commons.ToArray();
+		}
 
-        private Dictionary<char,int> CompileAnswers(){
-            var dict = new Dictionary<char, int>();
-            foreach(var answer in this.PeopleAnswers){
-                var yeses = answer.ToCharArray();
+		private Dictionary<char, int> CompileAnswers()
+		{
+			var dict = new Dictionary<char, int>();
+			foreach (var answer in PeopleAnswers)
+			{
+				var yeses = answer.ToCharArray();
 
-                foreach(var yes in yeses){
-                    if(dict.ContainsKey(yes)){
-                        dict[yes] = dict[yes] + 1;
-                    } else {
-                        dict.Add(yes,1);
-                    }
-                }
-            }
+				foreach (var yes in yeses)
+					if (dict.ContainsKey(yes))
+						dict[yes] = dict[yes] + 1;
+					else
+						dict.Add(yes, 1);
+			}
 
-            return dict;
-        }
-    }
+			return dict;
+		}
+	}
 
-    public class Day6 {
-        public int Run(string input) {
-            var groupList = this.ParseGroupList(input);
-            var sumOfYes = groupList.Sum(g => g.GetUniqueYes().Length);
+	public class Day6
+	{
+		public int Run(string input)
+		{
+			var groupList = ParseGroupList(input);
+			var sumOfYes = groupList.Sum(g => g.GetUniqueYes().Length);
 
-            return sumOfYes;
-        }
+			return sumOfYes;
+		}
 
-        public int Run2(string input) {
-            var groupList = this.ParseGroupList(input);
-            var sumOfYes = groupList.Sum(g => g.GetCommonYes().Length);
+		public int Run2(string input)
+		{
+			var groupList = ParseGroupList(input);
+			var sumOfYes = groupList.Sum(g => g.GetCommonYes().Length);
 
-            return sumOfYes;
-        }
+			return sumOfYes;
+		}
 
-        private List<Group> ParseGroupList(string input) {
-            var lines = input.Split("\r\n");
+		private List<Group> ParseGroupList(string input)
+		{
+			var lines = input.Split("\r\n");
 
-            var lineIndex = 0;
+			var lineIndex = 0;
 
-            var groupList = new List<Group>();
-            var groupLines = new List<string>();
-            while(lineIndex < lines.Length){
-                var currentLine = lines[lineIndex];
-                if(currentLine.Length > 0) {
-                    groupLines.Add(currentLine);
-                } else {
-                    groupList.Add(new Group{PeopleAnswers = groupLines});
-                    groupLines = new List<string>();
-                }
-                lineIndex++;
-            }
-            if(groupLines.Count > 0){
-                groupList.Add(new Group{PeopleAnswers = groupLines});
-            }
+			var groupList = new List<Group>();
+			var groupLines = new List<string>();
+			while (lineIndex < lines.Length)
+			{
+				var currentLine = lines[lineIndex];
+				if (currentLine.Length > 0)
+				{
+					groupLines.Add(currentLine);
+				}
+				else
+				{
+					groupList.Add(new Group {PeopleAnswers = groupLines});
+					groupLines = new List<string>();
+				}
 
-            return groupList;
-        }
-    }
+				lineIndex++;
+			}
+
+			if (groupLines.Count > 0) groupList.Add(new Group {PeopleAnswers = groupLines});
+
+			return groupList;
+		}
+	}
 }

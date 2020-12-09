@@ -1,15 +1,15 @@
-using System;
-using Xunit;
 using aoc_code;
+using aoc_tests.TestInputs;
+using Xunit;
 
 namespace aoc_tests
 {
-    public class Day4Tests
-    {
-        [Fact]
-        public void Run1Example()
-        {
-            var input = @"ecl:gry pid:860033327 eyr:2020 hcl:#fffffd
+	public class Day4Tests
+	{
+		[Fact]
+		public void Run1Example()
+		{
+			var input = @"ecl:gry pid:860033327 eyr:2020 hcl:#fffffd
 byr:1937 iyr:2017 cid:147 hgt:183cm
 
 iyr:2013 ecl:amb cid:350 eyr:2023 pid:028048884
@@ -23,23 +23,23 @@ hgt:179cm
 hcl:#cfa07d eyr:2025 pid:166559648
 iyr:2011 ecl:brn hgt:59in";
 
-            var test = new Day4().Run(input);
+			var test = new Day4().Run(input);
 
-            Assert.Equal(test, 2);
-        }
+			Assert.Equal(test, 2);
+		}
 
-        [Fact]
-        public void Run1Mine()
-        {
-            var test = new Day4().Run(TestInputs.Day4);
+		[Fact]
+		public void Run1Mine()
+		{
+			var test = new Day4().Run(TestInput.Day4);
 
-            Assert.Equal(test, 202);
-        }
+			Assert.Equal(test, 202);
+		}
 
-        [Fact]
-        public void Run2ExampleA()
-        {
-            var input = @"eyr:1972 cid:100
+		[Fact]
+		public void Run2ExampleA()
+		{
+			var input = @"eyr:1972 cid:100
 hcl:#18171d ecl:amb hgt:170 pid:186cm iyr:2018 byr:1926
 
 iyr:2019
@@ -53,15 +53,15 @@ hgt:59cm ecl:zzz
 eyr:2038 hcl:74454a iyr:2023
 pid:3556412378 byr:2007";
 
-            var test = new Day4().Run2(input);
+			var test = new Day4().Run2(input);
 
-            Assert.Equal(test, 0);
-        }
+			Assert.Equal(test, 0);
+		}
 
-        [Fact]
-        public void Run2ExampleB()
-        {
-            var input = @"pid:087499704 hgt:74in ecl:grn iyr:2012 eyr:2030 byr:1980
+		[Fact]
+		public void Run2ExampleB()
+		{
+			var input = @"pid:087499704 hgt:74in ecl:grn iyr:2012 eyr:2030 byr:1980
 hcl:#623a2f
 
 eyr:2029 ecl:blu cid:129 byr:1989
@@ -74,17 +74,17 @@ eyr:2022
 
 iyr:2010 hgt:158cm hcl:#b6652a ecl:blu byr:1944 eyr:2021 pid:093154719";
 
-            var test = new Day4().Run2(input);
+			var test = new Day4().Run2(input);
 
-            Assert.Equal(test, 4);
-        }
+			Assert.Equal(test, 4);
+		}
 
-        [Fact]
-        public void Run2Mine()
-        {
-            var test = new Day4().Run2(TestInputs.Day4);
+		[Fact]
+		public void Run2Mine()
+		{
+			var test = new Day4().Run2(TestInput.Day4);
 
-            Assert.Equal(test, 137);
-        }
-    }
+			Assert.Equal(test, 137);
+		}
+	}
 }

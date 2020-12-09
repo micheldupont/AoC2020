@@ -1,6 +1,8 @@
-public partial class TestInputs {
-    
-    public static string Day4 = @"hgt:159cm
+namespace aoc_tests.TestInputs
+{
+	public static partial class TestInput
+	{
+		public static string Day4 = @"hgt:159cm
 pid:561068005 eyr:2025 iyr:2017 cid:139 ecl:blu hcl:#ceb3a1
 byr:1940
 
@@ -1068,4 +1070,5 @@ hgt:170cm
 
 hgt:60in eyr:2026 byr:1922 hcl:#18171d iyr:2016
 pid:921038878";
+	}
 }

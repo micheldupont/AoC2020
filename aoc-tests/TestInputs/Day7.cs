@@ -1,6 +1,8 @@
-public partial class TestInputs 
+namespace aoc_tests.TestInputs
 {
-        public static string Day7 = @"dim red bags contain 2 bright gold bags, 5 striped fuchsia bags.
+	public static partial class TestInput
+	{
+		public static string Day7 = @"dim red bags contain 2 bright gold bags, 5 striped fuchsia bags.
 dotted purple bags contain 5 bright olive bags, 3 faded maroon bags.
 plaid chartreuse bags contain 1 vibrant olive bag, 5 bright black bags, 1 clear tomato bag.
 wavy orange bags contain 4 dark lavender bags, 4 posh white bags.
@@ -594,4 +596,5 @@ vibrant lime bags contain 5 light green bags.
 dark maroon bags contain 5 drab bronze bags, 4 bright red bags, 1 posh cyan bag.
 wavy red bags contain 2 mirrored beige bags, 5 muted crimson bags, 5 vibrant orange bags, 3 posh turquoise bags.
 drab brown bags contain 1 faded tan bag, 3 vibrant maroon bags.";
+	}
 }

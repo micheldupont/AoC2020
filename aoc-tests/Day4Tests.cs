@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using aoc_code;
 using aoc_tests.TestInputs;
 using Xunit;
@@ -25,7 +27,7 @@ iyr:2011 ecl:brn hgt:59in";
 
 			var test = new Day4().Run(input);
 
-			Assert.Equal(test, 2);
+			Assert.Equal(2, test);
 		}
 
 		[Fact]
@@ -33,7 +35,7 @@ iyr:2011 ecl:brn hgt:59in";
 		{
 			var test = new Day4().Run(TestInput.Day4);
 
-			Assert.Equal(test, 202);
+			Assert.Equal(202, test);
 		}
 
 		[Fact]
@@ -55,7 +57,7 @@ pid:3556412378 byr:2007";
 
 			var test = new Day4().Run2(input);
 
-			Assert.Equal(test, 0);
+			Assert.Equal(0, test);
 		}
 
 		[Fact]
@@ -76,7 +78,7 @@ iyr:2010 hgt:158cm hcl:#b6652a ecl:blu byr:1944 eyr:2021 pid:093154719";
 
 			var test = new Day4().Run2(input);
 
-			Assert.Equal(test, 4);
+			Assert.Equal(4, test);
 		}
 
 		[Fact]
@@ -84,7 +86,7 @@ iyr:2010 hgt:158cm hcl:#b6652a ecl:blu byr:1944 eyr:2021 pid:093154719";
 		{
 			var test = new Day4().Run2(TestInput.Day4);
 
-			Assert.Equal(test, 137);
+			Assert.Equal(137, test);
 		}
 	}
 }

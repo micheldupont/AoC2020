@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using aoc_code;
 using aoc_tests.TestInputs;
 using Xunit;

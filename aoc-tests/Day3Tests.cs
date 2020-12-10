@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using aoc_code;
 using aoc_tests.TestInputs;
 using Xunit;
@@ -22,14 +24,14 @@ namespace aoc_tests
 .#..#...#.#";
 
 			var test = new Day3().Run(input, 3, 1);
-			Assert.Equal(test, 7);
+			Assert.Equal(7, test);
 		}
 
 		[Fact]
 		public void Run1Mine()
 		{
 			var test = new Day3().Run(TestInput.Day3, 3, 1);
-			Assert.Equal(test, 286);
+			Assert.Equal(286, test);
 		}
 
 		[Fact]
@@ -48,14 +50,14 @@ namespace aoc_tests
 .#..#...#.#";
 
 			var test = new Day3().Run2(input);
-			Assert.Equal(test, 336);
+			Assert.Equal(336, test);
 		}
 
 		[Fact]
 		public void Run2Mine()
 		{
 			var test = new Day3().Run2(TestInput.Day3);
-			Assert.Equal(test, 3638606400);
+			Assert.Equal(3638606400, test);
 		}
 	}
 }
